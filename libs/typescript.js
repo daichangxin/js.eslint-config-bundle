@@ -111,6 +111,9 @@ module.exports = {
         'import/named': 'off',
 
         'no-bitwise': 'off',
+
+        // https://typescript-eslint.io/rules/no-explicit-any/
+        '@typescript-eslint/no-explicit-any': ['warn', { ignoreRestArgs: true }],
     },
 
     settings: {

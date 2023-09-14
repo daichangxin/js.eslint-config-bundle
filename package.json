@@ -7,6 +7,7 @@
         "libs/"
     ],
     "scripts": {
+        "lint": "eslint libs/",
         "test": "echo \"Error: no test specified\""
     },
     "keywords": [
@@ -17,6 +18,7 @@
     "license": "MIT",
     "dependencies": {
         "@babel/eslint-parser": "^7.22.15",
+        "@babel/eslint-plugin": "^7.22.10",
         "@typescript-eslint/eslint-plugin": "^6.7.0",
         "@typescript-eslint/parser": "^6.7.0",
         "eslint": "^8.49.0",
@@ -30,5 +32,9 @@
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "prettier": "^3.0.3"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.21",
+        "react": "^18.2.0"
     }
 }
