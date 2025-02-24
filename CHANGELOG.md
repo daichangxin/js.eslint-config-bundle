@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.1.2 (2025-02-24)
+
+
+### Bug Fixes
+
+* prettier plugin not working ([ca1145f](https://github.com/daichangxin/js.eslint-config-bundle/commit/ca1145f53c96e6123f39b0817169cf263d8ac421))
+
 ### 2.1.1 (2025-02-24)
 
 
