@@ -1,6 +1,7 @@
 import jsLint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import prettierEslint from 'eslint-config-prettier';
+import pretterPlugin from 'eslint-plugin-prettier';
 import tseslint from 'typescript-eslint';
 import pluginImportConfig from './plugin-import-config.mjs';
 import { compat } from './utils/compat.mjs';
@@ -12,18 +13,25 @@ const config = [
     jsLint.configs.recommended,
     ...tseslint.configs.recommended,
     ...compat.extends('airbnb-base'),
-    prettierEslint,
     stylistic.configs['disable-legacy'],
     pluginImportConfig,
     {
         name: 'typescript-eslint-config',
-        plugins: {},
+        plugins: {
+            prettier: pretterPlugin,
+        },
         languageOptions: {
             parserOptions: {
                 project: ['./tsconfig.json'],
                 ecmaVersion: 'latest',
                 sourceType: 'module',
             },
+        },
+    },
+    {
+        rules: {
+            ...pretterPlugin.configs.recommended.rules,
+            ...prettierEslint.rules,
         },
     },
     {

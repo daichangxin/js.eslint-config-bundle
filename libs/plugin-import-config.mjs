@@ -15,11 +15,6 @@ const config = {
         },
         // Append 'ts' extensions to Airbnb 'import/extensions' setting
         'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.mjs', '.native.js'],
-
-        // use typescript parser for ts, tsx import
-        'import/parsers': {
-            '@typescript-eslint/parser': ['.ts', '.tsx'],
-        },
     },
     rules: {
         // class member, allow single line member don't have empty line between each other
