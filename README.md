@@ -25,8 +25,6 @@ npm install @eds-open/eslint-config-bundle -D
 
 `eslint.config.mjs`
 
-Basic:
-
 ```mjs title='eslint.config.mjs'
 import reactEslintConfig from '@eds-open/eslint-config-bundle/libs/react.config.mjs';
 import tsEslintConfig from '@eds-open/eslint-config-bundle/libs/typescript.config.mjs';
@@ -56,8 +54,6 @@ export default config;
 ## prettiter
 
 `.prettierrc.js`
-
-Basic:
 
 ```js
 module.exports = require('@eds-open/eslint-config-bundle/libs/prettier');
