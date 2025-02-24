@@ -14,7 +14,12 @@ ESLint flat config bundle files.
 
 # Usage
 
-Keep an empty `.eslintrc.js` file in your project otherwise 'import/no-unresolved' will not work, see https://github.com/import-js/eslint-plugin-import/issues/3079.
+> [!CAUTION]
+> Keep an empty `.eslintrc.js` file in your project otherwise `import/no-unresolved` will not work, see https://github.com/import-js/eslint-plugin-import/issues/3079.
+
+```bash
+npm install @eds-open/eslint-config-bundle -D
+```
 
 ## eslint
 
@@ -22,9 +27,10 @@ Keep an empty `.eslintrc.js` file in your project otherwise 'import/no-unresolve
 
 Basic:
 
-```mjs
+```mjs title='eslint.config.mjs'
 import reactEslintConfig from '@eds-open/eslint-config-bundle/libs/react.config.mjs';
 import tsEslintConfig from '@eds-open/eslint-config-bundle/libs/typescript.config.mjs';
+
 /**
  * @type {import('eslint').Linter.Config[]}
  */
