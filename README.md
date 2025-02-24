@@ -1,5 +1,7 @@
 # js.eslint-config-bundle
 
+ESLint flat config bundle files.
+
 <p>
     <a href="https://github.com/daichangxin/js.eslint-config-bundle/actions/workflows/npm%20publish.yml">
     <img src="https://github.com/daichangxin/js.eslint-config-bundle/actions/workflows/npm%20publish.yml/badge.svg" alt="build status"></a>
@@ -10,36 +12,37 @@
     <img src="https://img.shields.io/npm/v/@eds-open/eslint-config-bundle.svg?style=flat-square&colorB=51C838" alt="npm version"></a>
 </p>
 
-# Sample
+# Usage
 
 ## eslint
 
-`.eslintrc.js`
+`eslint.config.mjs`
 
 Basic:
 
-```
-module.exports = {
-    extends: ['@eds-open/eslint-config-bundle/libs/react'],
-};
-
-```
-
-Without babel config:
-
-```
-module.exports = {
-    extends: ['@eds-open/eslint-config-bundle/libs/react'],
-    parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-            babelrc: false,
-            configFile: false,
-            presets: ['@babel/preset-env'],
+```mjs
+import reactEslintConfig from '@eds-open/eslint-config-bundle/libs/react.config.mjs';
+import tsEslintConfig from '@eds-open/eslint-config-bundle/libs/typescript.config.mjs';
+/**
+ * @type {import('eslint').Linter.Config[]}
+ */
+const config = [
+    ...reactEslintConfig,
+    ...tsEslintConfig,
+    {
+        ignores: ['**/*.d.ts', '**/dist/**/*', 'eslint.config.mjs'],
+    },
+    {
+        // cosmos files run independently
+        files: ['**/*.fixture.tsx', '**/__mocks__/*'],
+        rules: {
+            'import/no-unused-modules': ['off'],
+            'import/no-default-export': ['off'],
         },
     },
-};
+];
 
+export default config;
 ```
 
 ## prettiter
@@ -48,19 +51,17 @@ module.exports = {
 
 Basic:
 
-```
+```js
 module.exports = require('@eds-open/eslint-config-bundle/libs/prettier');
-
 ```
 
 With plugins:
 
-```
+```js
 const base = require('@eds-open/eslint-config-bundle/libs/prettier');
 
 module.exports = {
     ...base,
     plugins: [require('prettier-plugin-tailwindcss')],
 };
-
 ```

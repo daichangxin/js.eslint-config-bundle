@@ -1,5 +1,26 @@
-module.exports = {
-    // base rules
+/**
+ * @type {import('eslint').Linter.Config}
+ */
+const config = {
+    name: 'plugin-import-rules',
+    settings: {
+        // Append 'ts' extensions to Airbnb 'import/resolver' setting
+        'import/resolver': {
+            node: {
+                extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json', '.native.js'],
+            },
+            typescript: {
+                alwaysTryTypes: true,
+            },
+        },
+        // Append 'ts' extensions to Airbnb 'import/extensions' setting
+        'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.mjs', '.native.js'],
+
+        // use typescript parser for ts, tsx import
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
+    },
     rules: {
         // class member, allow single line member don't have empty line between each other
         'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
@@ -34,11 +55,11 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'import/no-default-export': 'error',
 
-        // unused exports
         'import/no-unused-modules': [
             'error',
             {
                 unusedExports: true,
+                missingExports: false,
             },
         ],
 
@@ -63,3 +84,4 @@ module.exports = {
         'no-param-reassign': ['error', { props: false }],
     },
 };
+export default config;
