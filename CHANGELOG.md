@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.1.0 (2025-02-24)
+
+
+### Features
+
+* upgrade eslint to v9 ([68ae428](https://github.com/daichangxin/js.eslint-config-bundle/commit/68ae42805c9caf58a1ca9da39674633ecf2fc4a6))
+
 ## 1.2.0 (2023-11-21)
 
 
