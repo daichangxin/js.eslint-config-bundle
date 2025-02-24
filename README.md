@@ -14,6 +14,8 @@ ESLint flat config bundle files.
 
 # Usage
 
+Keep an empty `.eslintrc.js` file in your project otherwise 'import/no-unresolved' will not work, see https://github.com/import-js/eslint-plugin-import/issues/3079.
+
 ## eslint
 
 `eslint.config.mjs`
