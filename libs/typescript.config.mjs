@@ -1,9 +1,9 @@
 import jsLint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
-import tseslint from 'typescript-eslint';
-import { compat } from '../compat.mjs';
-import pluginImportConfig from './plugin-import-config.mjs';
 import prettierEslint from 'eslint-config-prettier';
+import tseslint from 'typescript-eslint';
+import pluginImportConfig from './plugin-import-config.mjs';
+import { compat } from './utils/compat.mjs';
 
 /**
  * @type {import('eslint').Linter.Config[]}

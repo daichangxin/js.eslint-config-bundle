@@ -1,7 +1,7 @@
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksAddons from 'eslint-plugin-react-hooks-addons';
-import { compat } from '../compat.mjs';
+import { compat } from './utils/compat.mjs';
 
 /**
  * @type {import('eslint').Linter.Config[]}
