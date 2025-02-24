@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.1.1 (2025-02-24)
+
+
+### Bug Fixes
+
+* lib not included ([588a199](https://github.com/daichangxin/js.eslint-config-bundle/commit/588a199dbff705ca293f18e4815e0b58a6ff508b))
+
 ## 2.1.0 (2025-02-24)
 
 
