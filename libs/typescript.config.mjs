@@ -1,6 +1,5 @@
 import jsLint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
-import prettierEslint from 'eslint-config-prettier';
 import pretterPlugin from 'eslint-plugin-prettier';
 import tseslint from 'typescript-eslint';
 import pluginImportConfig from './plugin-import-config.mjs';
@@ -14,11 +13,17 @@ const config = [
     ...tseslint.configs.recommended,
     ...compat.extends('airbnb-base'),
     stylistic.configs['disable-legacy'],
+    stylistic.configs.customize({
+        semi: true,
+        indent: 4,
+        quoteProps: 'as-needed',
+    }),
     pluginImportConfig,
     {
         name: 'typescript-eslint-config',
         plugins: {
             prettier: pretterPlugin,
+            '@stylistic': stylistic,
         },
         languageOptions: {
             parserOptions: {
@@ -26,12 +31,6 @@ const config = [
                 ecmaVersion: 'latest',
                 sourceType: 'module',
             },
-        },
-    },
-    {
-        rules: {
-            ...pretterPlugin.configs.recommended.rules,
-            ...prettierEslint.rules,
         },
     },
     {
@@ -55,6 +54,7 @@ const config = [
             // switch to typescript version rules
             // camelcase
             camelcase: 'off',
+            'no-spaced-func': 'off',
             '@typescript-eslint/naming-convention': [
                 'error',
                 {
