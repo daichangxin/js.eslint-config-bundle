@@ -10,4 +10,5 @@ const compat = new FlatCompat({
     resolvePluginsRelativeTo: __dirname, // optional;
 });
 
+// eslint-disable-next-line import/no-unused-modules
 export { compat };

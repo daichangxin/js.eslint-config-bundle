@@ -1,7 +1,7 @@
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
 import { config as importConfig } from './plugin-import-config.js';
-console.log('tseslint.configs.recommended', tseslint.configs.recommended);
+
 /**
  * @type {import('eslint').Linter.Config[]}
  */
