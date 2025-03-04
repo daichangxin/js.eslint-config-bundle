@@ -26,15 +26,13 @@ npm install @eds-open/eslint-config-bundle -D
 `eslint.config.mjs`
 
 ```mjs title='eslint.config.mjs'
-import reactEslintConfig from '@eds-open/eslint-config-bundle/libs/react.config.mjs';
-import tsEslintConfig from '@eds-open/eslint-config-bundle/libs/typescript.config.mjs';
+import { config as base } from '@eds-open/eslint-config-bundle/libs/index.js';
 
 /**
  * @type {import('eslint').Linter.Config[]}
  */
 const config = [
-    ...reactEslintConfig,
-    ...tsEslintConfig,
+    ...base,
     {
         ignores: ['**/*.d.ts', '**/dist/**/*', 'eslint.config.mjs'],
     },
@@ -57,15 +55,4 @@ export default config;
 
 ```js
 module.exports = require('@eds-open/eslint-config-bundle/libs/prettier');
-```
-
-With plugins:
-
-```js
-const base = require('@eds-open/eslint-config-bundle/libs/prettier');
-
-module.exports = {
-    ...base,
-    plugins: [require('prettier-plugin-tailwindcss')],
-};
 ```
