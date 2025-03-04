@@ -51,8 +51,12 @@ export default config;
 
 ## prettiter
 
-`.prettierrc.js`
+`.prettierrc.cjs`
 
-```js
-module.exports = require('@eds-open/eslint-config-bundle/libs/prettier');
+```cjs
+const base = require('@eds-open/eslint-config-bundle/libs/prettier.cjs');
+
+module.exports = {
+    ...base,
+};
 ```
