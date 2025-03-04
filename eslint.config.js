@@ -1,12 +1,16 @@
-import reactConfig from './libs/react.config.mjs';
-import tsConfig from './libs/typescript.config.mjs';
+import { config as base } from './libs/index.js';
 /**
  * @type {import('eslint').Linter.Config[]}
  */
 const config = [
-    ...reactConfig,
+    ...base,
     {
         ignores: ['**/*.d.ts', '**/dist/**/*'],
+    },
+    {
+        rules: {
+            'import/extensions': 'off',
+        },
     },
 ];
 export default config;

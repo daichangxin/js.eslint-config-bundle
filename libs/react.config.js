@@ -1,7 +1,7 @@
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 import reactHooksAddons from 'eslint-plugin-react-hooks-addons';
-import { compat } from './utils/compat.mjs';
 
 /**
  * @type {import('eslint').Linter.Config[]}
@@ -10,8 +10,8 @@ const config = [
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
     jsxA11yPlugin.flatConfigs.recommended,
+    reactHooks.configs['recommended-latest'],
     reactHooksAddons.configs.recommended,
-    ...compat.extends('plugin:react-hooks/recommended'),
     {
         name: 'react-eslint-config',
         settings: {
@@ -42,4 +42,4 @@ const config = [
     },
 ];
 
-export default config;
+export { config };
