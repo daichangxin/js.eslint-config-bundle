@@ -25,7 +25,7 @@ const config = [
         },
     },
     {
-        files: ['**/*.{ts,tsx,mts,cts}'],
+        files: ['**/*.{ts,tsx,mts,cts,mjs}'],
         rules: {
             // Note: you must disable the base rule as it can report incorrect errors
             'no-use-before-define': 'off',

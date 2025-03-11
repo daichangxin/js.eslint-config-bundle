@@ -14,6 +14,7 @@ const config = [
                     extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json', '.native.js'],
                 },
                 typescript: {
+                    project: ['**/*.tsconfig.json', '**/tsconfig.json'],
                     alwaysTryTypes: true,
                 },
             },
