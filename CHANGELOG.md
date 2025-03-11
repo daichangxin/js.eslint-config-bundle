@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.1 (2025-03-11)
+
+
+### Bug Fixes
+
+* import-resolver not working for monorepos ([23185a4](https://github.com/daichangxin/js.eslint-config-bundle/commit/23185a474bb5814fd7a068c4513ed1c67d3df1aa))
+
 ## 2.2.0 (2025-03-04)
 
 
