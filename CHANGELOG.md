@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.3 (2025-09-01)
+
+
+### Bug Fixes
+
+* tw rules for TailwindCSS v4 ([5cb4b38](https://github.com/daichangxin/js.eslint-config-bundle/commit/5cb4b3840a7f0cd648969649b9424afd73bdfd7e))
+
 ### 2.2.1 (2025-03-11)
 
 
