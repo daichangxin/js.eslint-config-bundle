@@ -1,6 +1,6 @@
 {
     "name": "@eds-open/eslint-config-bundle",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "description": "",
     "main": "index.js",
     "type": "module",
@@ -42,5 +42,8 @@
     },
     "peerDependencies": {
         "eslint": ">= 9"
+    },
+    "resolutions": {
+        "eslint-plugin-tailwindcss": "npm:@hyoban/eslint-plugin-tailwindcss@4.0.0-alpha.12"
     }
 }
