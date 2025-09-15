@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.6 (2025-09-15)
+
+
+### Bug Fixes
+
+* unused vars not working ([3a015e7](https://github.com/daichangxin/js.eslint-config-bundle/commit/3a015e71b2f2eba82b75a27843ffb943781a6239))
+
 ### 2.2.5 (2025-09-15)
 
 
