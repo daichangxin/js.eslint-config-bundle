@@ -1,21 +1,21 @@
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
-import { config as importConfig } from './plugin-import-config.js';
 
 /**
  * @type {import('eslint').Linter.Config[]}
  */
 const config = [
     ...tseslint.configs.recommended,
-    stylistic.configs['disable-legacy'],
     stylistic.configs.customize({
         semi: true,
         indent: 4,
         quoteProps: 'as-needed',
     }),
-    ...importConfig,
     {
         name: 'typescript-eslint-config',
+        plugins: {
+            '@stylistic': stylistic,
+        },
     },
     {
         // some rules affect the js file from 'typescript-eslint/recommended'
@@ -119,12 +119,6 @@ const config = [
             ],
             // https://typescript-eslint.io/rules/no-explicit-any/
             '@typescript-eslint/no-explicit-any': ['warn', { ignoreRestArgs: true }],
-        },
-        settings: {
-            // use typescript parser for ts, tsx import
-            'import/parsers': {
-                '@typescript-eslint/parser': ['.ts', '.tsx'],
-            },
         },
     },
 ];
