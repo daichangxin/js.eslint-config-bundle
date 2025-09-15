@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.2.5 (2025-09-15)
+
+
+### Bug Fixes
+
+* lint indent failed ([803ebf2](https://github.com/daichangxin/js.eslint-config-bundle/commit/803ebf24276eea1649d2a9a9e8624ad10d574d8f))
+
 ### 2.2.4 (2025-09-11)
 
 
