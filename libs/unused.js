@@ -15,11 +15,12 @@ const config = [
             'unused-imports/no-unused-vars': [
                 'error',
                 {
-                    args: 'after-used',
-                    argsIgnorePattern: '^_',
-                    ignoreRestSiblings: true,
+                    caughtErrors: 'all',
+                    caughtErrorsIgnorePattern: '^_',
                     vars: 'all',
                     varsIgnorePattern: '^_',
+                    args: 'after-used',
+                    argsIgnorePattern: '^_',
                 },
             ],
         },

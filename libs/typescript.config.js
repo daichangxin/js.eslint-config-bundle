@@ -106,17 +106,6 @@ const config = [
             '@typescript-eslint/array-type': ['error'],
             // prefer type imports
             '@typescript-eslint/consistent-type-imports': ['error'],
-            '@typescript-eslint/no-unused-vars': [
-                'error',
-                {
-                    args: 'none',
-                    caughtErrors: 'all',
-                    caughtErrorsIgnorePattern: '^_',
-                    destructuredArrayIgnorePattern: '^_',
-                    varsIgnorePattern: '^_',
-                    ignoreRestSiblings: true,
-                },
-            ],
             // https://typescript-eslint.io/rules/no-explicit-any/
             '@typescript-eslint/no-explicit-any': ['warn', { ignoreRestArgs: true }],
         },
