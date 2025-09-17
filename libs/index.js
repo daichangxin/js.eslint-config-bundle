@@ -13,4 +13,4 @@ const config = [
     ...importsConfig,
     ...unusedConfig,
 ];
-export { config };
+export { config, importsConfig, jsConfig, reactConfig, tailwindcss, typescriptConfig, unusedConfig };

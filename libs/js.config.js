@@ -20,6 +20,11 @@ const config = [
             },
         },
     },
+    {
+        rules: {
+            'max-lines-per-function': ['error', { max: 150, skipBlankLines: true, skipComments: true }],
+        },
+    },
 ];
 
 export { config };

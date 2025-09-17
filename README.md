@@ -12,10 +12,7 @@ ESLint flat config bundle files.
     <img src="https://img.shields.io/npm/v/@eds-open/eslint-config-bundle.svg?style=flat-square&colorB=51C838" alt="npm version"></a>
 </p>
 
-# Usage
-
-> [!CAUTION]
-> Keep an empty `.eslintrc.js` file in your project otherwise `import/no-unresolved` will not work, see https://github.com/import-js/eslint-plugin-import/issues/3079.
+## Usage
 
 ```bash
 npm install @eds-open/eslint-config-bundle -D
@@ -34,7 +31,7 @@ import { config as base } from '@eds-open/eslint-config-bundle/libs/index.js';
 const config = [
     ...base,
     {
-        ignores: ['**/*.d.ts', '**/dist/**/*', 'eslint.config.mjs'],
+        ignores: ['**/*.d.ts'],
     },
     {
         // cosmos files run independently
