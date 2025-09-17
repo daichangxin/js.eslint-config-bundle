@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.3.0 (2025-09-17)
+
+
+### Features
+
+* add max-lines rule ([3194afe](https://github.com/daichangxin/js.eslint-config-bundle/commit/3194afe9dc7ab8e1cd5e59824955d706a1662cac))
+
 ### 2.2.6 (2025-09-15)
 
 
