@@ -4,18 +4,21 @@ on:
         branches: [master, main]
 
 permissions:
-  contents: read          # Default
-  id-token: write         # Required for OIDC token generation
+  contents: write         # Required for git push and standard-version
+  id-token: write         # Required for npm Trusted Publisher
 
 jobs:
     auto_release_npm_package:
         runs-on: ubuntu-latest
         if: "!contains(github.event.head_commit.message, 'skip ci')"
         steps:
-          - uses: actions/checkout@v3
-          - uses: actions/setup-node@v3
+          - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0  # Required for standard-version to work properly
+          - uses: actions/setup-node@v4
             with:
               node-version: 20.x
+              registry-url: 'https://registry.npmjs.org'
           - name: setup
             run: |
               git config --local user.email "action@github.com"
@@ -28,11 +31,9 @@ jobs:
           - name: test
             run: |
               npm run test --if-present
-          - name: publish
+          - name: version and publish
             run: |
-              npm config set //registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}
-              npm config list
               SPACE_CHAR=" "
               npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}} [skip ci]"
-              npm publish --access public
+              npm publish --access public --provenance
               git push --follow-tags origin ${{ github.ref_name }}
