@@ -7,10 +7,10 @@ const config = [
     {
         ignores: ['**/*.d.ts', '**/dist/**/*'],
     },
-    {
-        rules: {
-            'import/extensions': 'off',
-        },
-    },
+    // {
+    //     rules: {
+    //         'import-x/extensions': 'off',
+    //     },
+    // },
 ];
 export default config;

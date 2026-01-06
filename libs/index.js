@@ -8,9 +8,9 @@ import { config as unusedConfig } from './unused.js';
 const config = [
     ...jsConfig,
     ...typescriptConfig,
-    ...tailwindcss,
-    ...reactConfig,
     ...importsConfig,
     ...unusedConfig,
+    ...reactConfig,
+    ...tailwindcss,
 ];
 export { config, importsConfig, jsConfig, reactConfig, tailwindcss, typescriptConfig, unusedConfig };

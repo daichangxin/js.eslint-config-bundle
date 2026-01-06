@@ -7,13 +7,10 @@ import reactHooksAddons from 'eslint-plugin-react-hooks-addons';
  * @type {import('eslint').Linter.Config[]}
  */
 const config = [
-    reactPlugin.configs.flat.recommended,
-    reactPlugin.configs.flat['jsx-runtime'],
-    jsxA11yPlugin.flatConfigs.recommended,
-    reactHooks.configs['recommended-latest'],
-    reactHooksAddons.configs.recommended,
     {
-        name: 'react-eslint-config',
+        name: 'react-recommended',
+        files: ['**/*.{jsx,tsx}'],
+        ...reactPlugin.configs.flat.recommended,
         settings: {
             react: {
                 version: 'detect',
@@ -21,6 +18,28 @@ const config = [
         },
     },
     {
+        name: 'react-jsx-runtime',
+        files: ['**/*.{jsx,tsx}'],
+        ...reactPlugin.configs.flat['jsx-runtime'],
+    },
+    {
+        name: 'jsx-a11y-recommended',
+        files: ['**/*.{jsx,tsx}'],
+        ...jsxA11yPlugin.flatConfigs.recommended,
+    },
+    {
+        name: 'react-hooks-recommended',
+        files: ['**/*.{jsx,tsx}'],
+        ...reactHooks.configs['recommended-latest'],
+    },
+    {
+        name: 'react-hooks-addons',
+        files: ['**/*.{jsx,tsx}'],
+        ...reactHooksAddons.configs.recommended,
+    },
+    {
+        name: 'react-rules',
+        files: ['**/*.{jsx,tsx}'],
         rules: {
             // allow non-dom to use autoFocus prop
             'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
@@ -36,8 +55,12 @@ const config = [
             // react-hooks
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'error',
+            
             // prop-types checked by tsc in compile time
             'react/prop-types': 'off',
+
+            // prefer destructuring in function parameters
+            'react/destructuring-assignment': ['error', 'always'],
         },
     },
 ];

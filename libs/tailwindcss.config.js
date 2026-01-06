@@ -6,8 +6,13 @@ import tailwind from 'eslint-plugin-tailwindcss';
 const config = [
     ...tailwind.configs['flat/recommended'],
     {
+        name: 'tailwindcss-settings',
+        files: ['**/*.{jsx,tsx}'],
         settings: {
-            callees: ['classnames', 'clsx', 'ctl', 'cn'],
+            tailwindcss: {
+                callees: ['classnames', 'clsx', 'ctl', 'cn'],
+                config: 'tailwind.config.js',
+            },
         },
     },
 ];
