@@ -2,9 +2,37 @@ name: publish npm package
 on:
     push:
         branches: [master, main]
+
+permissions:
+  contents: read          # Default
+  id-token: write         # Required for OIDC token generation
+
 jobs:
     auto_release_npm_package:
+        runs-on: ubuntu-latest
         if: "!contains(github.event.head_commit.message, 'skip ci')"
-        uses: daichangxin/github-config/.github/workflows/auto_release_npm_package.yml@master
-        secrets:
-            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-node@v3
+            with:
+              node-version: 20.x
+          - name: setup
+            run: |
+              git config --local user.email "action@github.com"
+              git config --local user.name "GitHub Action"
+              git checkout ${{ github.ref_name }}
+              npm install --legacy-peer-deps
+          - name: build
+            run: |
+              npm run build --if-present
+          - name: test
+            run: |
+              npm run test --if-present
+          - name: publish
+            run: |
+              npm config set //registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}
+              npm config list
+              SPACE_CHAR=" "
+              npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}} [skip ci]"
+              npm publish --access public
+              git push --follow-tags origin ${{ github.ref_name }}
