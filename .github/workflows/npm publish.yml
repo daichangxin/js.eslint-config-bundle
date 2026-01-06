@@ -1,16 +1,19 @@
-name: publish npm package
+name: Manual Publish npm Package
 on:
-    push:
-        branches: [master, main]
+  workflow_dispatch:
+    inputs:
+      otp:
+        description: 'npm Two-Factor Authentication Code (6 digits)'
+        required: true
+        type: string
 
 permissions:
   contents: write         # Required for git push and standard-version
   id-token: write         # Required for npm Trusted Publisher
 
 jobs:
-    auto_release_npm_package:
+    manual_release_npm_package:
         runs-on: ubuntu-latest
-        if: "!contains(github.event.head_commit.message, 'skip ci')"
         steps:
           - uses: actions/checkout@v4
             with:
@@ -23,7 +26,6 @@ jobs:
             run: |
               git config --local user.email "action@github.com"
               git config --local user.name "GitHub Action"
-              git checkout ${{ github.ref_name }}
               npm install --legacy-peer-deps
           - name: build
             run: |
@@ -31,9 +33,15 @@ jobs:
           - name: test
             run: |
               npm run test --if-present
-          - name: version and publish
+          - name: version bump
             run: |
               SPACE_CHAR=" "
               npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}} [skip ci]"
-              npm publish --access public --provenance
+
+          - name: publish to npm with 2FA
+            run: |
+              npm publish --access public --otp=${{ github.event.inputs.otp }}
+
+          - name: push changes
+            run: |
               git push --follow-tags origin ${{ github.ref_name }}
