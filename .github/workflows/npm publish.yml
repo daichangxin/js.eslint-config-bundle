@@ -17,7 +17,7 @@ jobs:
         steps:
           - uses: actions/checkout@v4
             with:
-              fetch-depth: 0  # Required for standard-version to work properly
+              fetch-depth: 0
           - uses: actions/setup-node@v4
             with:
               node-version: 20.x
@@ -37,32 +37,11 @@ jobs:
             run: |
               SPACE_CHAR=" "
               npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}} [skip ci]"
-
-          - name: debug npm configuration
-            run: |
-              echo "=== npm configuration ==="
-              npm config list
-              echo ""
-              echo "=== npm whoami ==="
-              npm whoami || echo "Not authenticated"
-              echo ""
-              echo "=== package info ==="
-              cat package.json | jq '.name, .version'
-              echo ""
-              echo "=== check existing package ==="
-              npm view @eds-open/eslint-config-bundle version || echo "Package not found or no access"
-              echo ""
-              echo "=== check user access to @eds-open ==="
-              npm access ls-packages @eds-open || echo "No access to @eds-open packages"
-            env:
-              NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
           - name: publish to npm with 2FA
             run: |
               npm publish --access public --otp=${{ github.event.inputs.otp }}
             env:
               NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
           - name: push changes
             run: |
               git push --follow-tags origin ${{ github.ref_name }}
