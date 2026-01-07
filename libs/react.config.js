@@ -30,7 +30,7 @@ const config = [
     {
         name: 'react-hooks-recommended',
         files: ['**/*.{jsx,tsx}'],
-        ...reactHooks.configs['recommended-latest'],
+        ...reactHooks.configs.flat.recommended,
     },
     {
         name: 'react-hooks-addons',
@@ -55,7 +55,7 @@ const config = [
             // react-hooks
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'error',
-            
+
             // prop-types checked by tsc in compile time
             'react/prop-types': 'off',
 
