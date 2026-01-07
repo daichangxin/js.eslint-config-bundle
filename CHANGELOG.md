@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/daichangxin/js.eslint-config-bundle/compare/v2.5.0...v2.6.0) (2026-01-07)
+
+
+### Features
+
+* revert some typescript rules ([6355241](https://github.com/daichangxin/js.eslint-config-bundle/commit/63552411506d52a33281691a0cfb5839f3482c83))
+
 ## [2.5.0](https://github.com/daichangxin/js.eslint-config-bundle/compare/v2.3.0...v2.5.0) (2026-01-07)
 
 
