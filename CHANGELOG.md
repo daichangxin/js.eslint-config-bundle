@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/daichangxin/js.eslint-config-bundle/compare/v2.3.0...v2.5.0) (2026-01-07)
+
+
+### Features
+
+* manual publish package ([fd3bd73](https://github.com/daichangxin/js.eslint-config-bundle/commit/fd3bd731acb272808a2bf67fda5edec4b22745ef))
+* update ci for npm token expired ([dd76592](https://github.com/daichangxin/js.eslint-config-bundle/commit/dd7659203865bee0d11a86c83c474ba03985ece9))
+* update ci for npm token expired ([32598ca](https://github.com/daichangxin/js.eslint-config-bundle/commit/32598cad4ec88c31dd729def6482d8f6dbe90e76))
+* update react hooks lints ([bed4fdc](https://github.com/daichangxin/js.eslint-config-bundle/commit/bed4fdce22f5036dd351d90bebb667769a2b7ee7))
+
 ## [2.4.0](https://github.com/daichangxin/js.eslint-config-bundle/compare/v2.3.0...v2.4.0) (2026-01-06)
 
 
