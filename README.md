@@ -23,7 +23,7 @@ npm install @eds-open/eslint-config-bundle -D
 `eslint.config.mjs`
 
 ```mjs title='eslint.config.mjs'
-import { config as base } from '@eds-open/eslint-config-bundle/libs/index.js';
+import { config as base } from '@eds-open/eslint-config-bundle';
 
 /**
  * @type {import('eslint').Linter.Config[]}
@@ -51,9 +51,10 @@ export default config;
 `.prettierrc.cjs`
 
 ```cjs
-const base = require('@eds-open/eslint-config-bundle/libs/prettier.cjs');
+const base = require('@eds-open/eslint-config-bundle/prettier');
 
 module.exports = {
     ...base,
 };
+
 ```
