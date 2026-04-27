@@ -1,9 +1,9 @@
 import pluginUnusedImports from 'eslint-plugin-unused-imports';
-/**
- * @type {import('eslint').Linter.Config[]}
- */
-const config = [
-    {
+
+import type { Linter, UnusedConfigOptions } from './types';
+
+export function createUnusedConfig(options?: UnusedConfigOptions): Linter.Config[] {
+    const config: Linter.Config = {
         name: 'extend/unused',
         plugins: {
             'unused-imports': pluginUnusedImports,
@@ -23,7 +23,16 @@ const config = [
                     ignoreRestSiblings: true,
                 },
             ],
+            ...(options?.rules ?? {}),
         },
-    },
-];
-export { config };
+    };
+
+    if (options?.files) {
+        config.files = options.files;
+    }
+
+    return [config];
+}
+
+// Default export for backward compatibility
+export const config: Linter.Config[] = createUnusedConfig();

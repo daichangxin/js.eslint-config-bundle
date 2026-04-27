@@ -1,6 +1,6 @@
 # js.eslint-config-bundle
 
-ESLint flat config bundle files.
+ESLint flat config bundle files with TypeScript support.
 
 <p>
     <a href="https://github.com/daichangxin/js.eslint-config-bundle/actions/workflows/npm%20publish.yml">
@@ -12,49 +12,132 @@ ESLint flat config bundle files.
     <img src="https://img.shields.io/npm/v/@eds-open/eslint-config-bundle.svg?style=flat-square&colorB=51C838" alt="npm version"></a>
 </p>
 
-## Usage
+## Installation
 
 ```bash
 npm install @eds-open/eslint-config-bundle -D
+# or
+pnpm add @eds-open/eslint-config-bundle -D
 ```
 
-## eslint
+## Usage
 
-`eslint.config.mjs`
+### Basic Usage (Default Bundle)
 
-```mjs title='eslint.config.mjs'
-import { config as base } from '@eds-open/eslint-config-bundle';
+Use the default configuration that includes all configs:
 
-/**
- * @type {import('eslint').Linter.Config[]}
- */
-const config = [
-    ...base,
+```js
+// eslint.config.js
+import { config } from '@eds-open/eslint-config-bundle';
+
+export default [
+    ...config,
     {
-        ignores: ['**/*.d.ts'],
-    },
-    {
-        // cosmos files run independently
-        files: ['**/*.fixture.tsx', '**/__mocks__/*'],
-        rules: {
-            'import/no-unused-modules': ['off'],
-            'import/no-default-export': ['off'],
-        },
+        ignores: ['**/*.d.ts', 'dist/**'],
     },
 ];
-
-export default config;
 ```
 
-## prettiter
+### Custom Bundle with Options
 
-`.prettierrc.cjs`
+Create a customized bundle using the factory function:
 
-```cjs
-const base = require('@eds-open/eslint-config-bundle/prettier');
+```js
+// eslint.config.js
+import { createConfig } from '@eds-open/eslint-config-bundle';
 
-module.exports = {
-    ...base,
+export default [
+    ...createConfig({
+        // Customize JS config
+        js: {
+            globals: { myGlobal: 'readonly' },
+            rules: { 'no-console': 'warn' },
+        },
+        // Customize TypeScript config
+        typescript: {
+            stylistic: {
+                semi: true,
+                indent: 2,
+            },
+        },
+        // Disable specific configs
+        tailwind: false,
+    }),
+    {
+        ignores: ['**/*.d.ts', 'dist/**'],
+    },
+];
+```
+
+### Individual Configs
+
+Import and use individual configs:
+
+```js
+// eslint.config.js
+import { 
+    createJsConfig, 
+    createTypeScriptConfig, 
+    createReactConfig 
+} from '@eds-open/eslint-config-bundle';
+
+export default [
+    ...createJsConfig(),
+    ...createTypeScriptConfig({
+        files: ['**/*.ts', '**/*.tsx'],
+    }),
+    ...createReactConfig({
+        version: '18.0.0',
+    }),
+];
+```
+
+### Direct Config Imports
+
+You can also import configs directly from their subpaths:
+
+```js
+import { createJsConfig } from '@eds-open/eslint-config-bundle/js';
+import { createTypeScriptConfig } from '@eds-open/eslint-config-bundle/typescript';
+import { createReactConfig } from '@eds-open/eslint-config-bundle/react';
+```
+
+## Available Configs
+
+- `js` - JavaScript configuration
+- `typescript` - TypeScript configuration with stylistic rules
+- `react` - React and JSX configuration
+- `imports` - Import sorting and organization
+- `unused` - Unused imports detection
+- `tailwindcss` - Tailwind CSS class validation
+- `prettier` - Prettier configuration (not an ESLint config)
+
+## TypeScript Support
+
+This package is written in TypeScript and provides full type definitions. You'll get autocomplete and type checking for all configuration options.
+
+```typescript
+import type { BundleConfigOptions } from '@eds-open/eslint-config-bundle';
+
+const options: BundleConfigOptions = {
+    js: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+    },
+    typescript: {
+        stylistic: {
+            semi: true,
+            indent: 4,
+        },
+    },
 };
+```
 
+## Prettier Configuration
+
+```js
+// prettier.config.js
+import prettierConfig from '@eds-open/eslint-config-bundle/prettier';
+
+export default prettierConfig;
 ```

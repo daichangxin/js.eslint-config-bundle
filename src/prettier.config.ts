@@ -6,4 +6,4 @@ export default {
     tabWidth: 4,
     endOfLine: 'lf',
     arrowParens: 'always',
-};
+} as const;
