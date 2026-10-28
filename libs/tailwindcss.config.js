@@ -1,28 +1,16 @@
-import tailwind from 'eslint-plugin-tailwindcss';
+import betterTailwind from 'eslint-plugin-better-tailwindcss';
 
 /**
  * @type {import('eslint').Linter.Config[]}
  */
-const files = ['**/*.{js,jsx,ts,tsx}'];
-
-const rawConfigs = Array.isArray(tailwind.configs?.['flat/recommended'])
-    ? tailwind.configs['flat/recommended']
-    : (tailwind.configs?.recommended ? [tailwind.configs.recommended] : []);
-
-const recommendedConfigs = rawConfigs.map(cfg => ({
-    ...cfg,
-    files: cfg.files ?? files,
-}));
-
 const config = [
-    ...recommendedConfigs,
     {
-        name: 'tailwindcss-settings',
-        files,
+        name: 'better-tailwindcss/recommended',
+        files: ['**/*.{js,jsx,ts,tsx,vue,svelte,astro,html}'],
+        ...betterTailwind.configs.recommended,
         settings: {
-            tailwindcss: {
-                callees: ['classnames', 'clsx', 'ctl', 'cn', 'cva', 'tv'],
-                config: {},
+            'better-tailwindcss': {
+                detectComponentClasses: true,
             },
         },
     },
