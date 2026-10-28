@@ -13,7 +13,7 @@ const config = [
     }),
     {
         name: 'typescript-eslint-config',
-        files: ['**/*.{ts,tsx}'],
+        files: ['**/*.{ts,tsx,mts,cts}'],
         plugins: {
             '@stylistic': stylistic,
         },
@@ -30,7 +30,7 @@ const config = [
         },
     },
     {
-        files: ['**/*.{ts,tsx,mts,cts,mjs}'],
+        files: ['**/*.{ts,tsx,mts,cts}'],
         rules: {
             // Note: you must disable the base rule as it can report incorrect errors
             'no-use-before-define': 'off',

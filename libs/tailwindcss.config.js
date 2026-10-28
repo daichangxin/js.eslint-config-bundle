@@ -3,15 +3,26 @@ import tailwind from 'eslint-plugin-tailwindcss';
 /**
  * @type {import('eslint').Linter.Config[]}
  */
+const files = ['**/*.{js,jsx,ts,tsx}'];
+
+const rawConfigs = Array.isArray(tailwind.configs?.['flat/recommended'])
+    ? tailwind.configs['flat/recommended']
+    : (tailwind.configs?.recommended ? [tailwind.configs.recommended] : []);
+
+const recommendedConfigs = rawConfigs.map(cfg => ({
+    ...cfg,
+    files: cfg.files ?? files,
+}));
+
 const config = [
-    ...tailwind.configs['flat/recommended'],
+    ...recommendedConfigs,
     {
         name: 'tailwindcss-settings',
-        files: ['**/*.{jsx,tsx}'],
+        files,
         settings: {
             tailwindcss: {
-                callees: ['classnames', 'clsx', 'ctl', 'cn'],
-                config: 'tailwind.config.js',
+                callees: ['classnames', 'clsx', 'ctl', 'cn', 'cva', 'tv'],
+                config: {},
             },
         },
     },

@@ -12,13 +12,15 @@ const config = [
             globals: {
                 ...globals.browser,
                 ...globals.node,
-                ...globals.es2022,
+                ...globals.es2025,
             },
             ecmaVersion: 'latest',
             sourceType: 'module',
         },
     },
     {
+        name: 'js-rules',
+        files: ['**/*.{js,jsx,mjs,cjs}'],
         rules: {
             'max-lines-per-function': ['error', { max: 150, skipBlankLines: true, skipComments: true }],
         },
