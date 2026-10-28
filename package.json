@@ -7,6 +7,10 @@
     "files": [
         "libs/"
     ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
     "exports": {
         ".": "./libs/index.js",
         "./js": "./libs/js.config.js",
